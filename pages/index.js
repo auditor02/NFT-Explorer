@@ -28,6 +28,20 @@ export default function Home() {
     return results;
   };
 
+  const clicked = (item) => {
+    // Get the marketplace url
+
+    const marketplaceUrl = item.metadata.marketplace_url;
+
+    // If the url exists, redirect the user
+    if (marketplaceUrl) {
+      window.location.href = marketplaceUrl;
+    } else {
+      console.log("Marketplace URK not found in metadata")
+    }
+  };
+
+
   return (
     <div className="flex flex-col md:px-12 px-4 bg-background font-spacemono items-center min-h-screen">
       <h1 className="md:text-6xl text-4xl font-bold text-primary mt-10">
@@ -96,14 +110,11 @@ export default function Home() {
                           {item.metadata.description}
                         </p>
                         <p className="mt-4 text-base leading-relaxed text-secondary">
-                         {item.token_id}
+                         {item.metadata.owner}
                         </p>
-                       
                         <button
                           className="block w-full rounded-lg px-5 py-3 bg-active text-base text-primary font-bold focus:outline-none focus:ring-2 focus:ring-primary sm:px-10"
-                          onClick={() => {
-                            window.open(item.metadata.image, '_blank');
-                          }}
+                          onClick={() => clicked(item)}
                         >
                           Buy
                         </button>
