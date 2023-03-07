@@ -95,14 +95,18 @@ export default function Home() {
                         <p className="mt-4 text-base leading-relaxed text-secondary">
                           {item.metadata.description}
                         </p>
-                        {item.metadata.external_link && (
-                          <a
-                            href={item.metadata.external_link}
-                            className="mt-4 block text-active underline"
-                          >
-                            View
-                          </a>
-                        )}
+                        <p className="mt-4 text-base leading-relaxed text-secondary">
+                         {item.token_id}
+                        </p>
+                       
+                        <button
+                          className="block w-full rounded-lg px-5 py-3 bg-active text-base text-primary font-bold focus:outline-none focus:ring-2 focus:ring-primary sm:px-10"
+                          onClick={() => {
+                            window.open(item.metadata.image, '_blank');
+                          }}
+                        >
+                          Buy
+                        </button>
                       </div>
                     </div>
                   </div>
